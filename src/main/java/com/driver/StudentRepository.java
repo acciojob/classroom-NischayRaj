@@ -6,14 +6,14 @@ import java.util.*;
 
 @Repository
 public class StudentRepository {
-    private Map<String, Student> sMap;
-    private Map<String, Teacher> tMap;
-    private Map<String, ArrayList<String>> stMap;
+    private HashMap<String, Student> sMap;
+    private HashMap<String, Teacher> tMap;
+    private HashMap<String, List<String>> stMap;
 
     public StudentRepository() {
         this.sMap = new HashMap<String, Student>();
         this.tMap = new HashMap<String, Teacher>();
-        this.stMap = new HashMap<String, ArrayList<String>>();
+        this.stMap = new HashMap<String, List<String>>();
     }
 
     public void addTeacherToDB(Teacher teacher) {
@@ -32,7 +32,7 @@ public class StudentRepository {
         if (sMap.containsKey(student) && tMap.containsKey(teacher)) {
             sMap.put(student, sMap.get(student));
             tMap.put(teacher, tMap.get(teacher));
-            ArrayList<String> StudentsInClass = new ArrayList<>();
+            List<String> StudentsInClass = new ArrayList<>();
             if (tMap.containsKey(teacher)) {
                 StudentsInClass = stMap.get(teacher);
                 StudentsInClass.add(student);
@@ -48,8 +48,8 @@ public class StudentRepository {
     public ArrayList<String> getListOfStudents() {
         return new ArrayList<>(sMap.keySet());
     }
-    public ArrayList<String> getStudentFromTeacher(String teacher) {
-        ArrayList<String> noOfStudents = new ArrayList<>();
+    public List<String> getStudentFromTeacher(String teacher) {
+        List<String> noOfStudents = new ArrayList<>();
         if (stMap.containsKey(teacher)) {
             noOfStudents = stMap.get(teacher);
         }
@@ -58,7 +58,7 @@ public class StudentRepository {
 
 
     public void deleteTeacherByStudents(String teacher) {
-        ArrayList<String> Students = new ArrayList<>();
+        List<String> Students = new ArrayList<>();
         if (stMap.containsKey(teacher)) {
             Students = stMap.get(teacher);
             for (String student : Students) {
