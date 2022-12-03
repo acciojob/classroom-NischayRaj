@@ -31,8 +31,8 @@ public class StudentService {
         return studentRepository.getTeacher(name);
     }
 
-    public List<String> findStudentFromTeacher(String name) {
-        return studentRepository.getStudentFromTeacher(name);
+    public List<String> findStudentFromTeacher(String teacher) {
+        return studentRepository.getStudentFromTeacher(teacher);
     }
 
     public List<String> getAllStudents(){
