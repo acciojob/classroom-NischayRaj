@@ -29,11 +29,15 @@ public class StudentRepository {
     }
 
     public void addStudentTeacher(String student, String teacher) {
-        ArrayList<String> StudentsInClass = new ArrayList<>();
-        if (tMap.containsKey(teacher)) {
-            StudentsInClass = stMap.get(teacher);
-            StudentsInClass.add(student);
-            stMap.put(teacher, StudentsInClass);
+        if (sMap.containsKey(student) && tMap.containsKey(teacher)) {
+            sMap.put(student, sMap.get(student));
+            tMap.put(teacher, tMap.get(teacher));
+            ArrayList<String> StudentsInClass = new ArrayList<>();
+            if (tMap.containsKey(teacher)) {
+                StudentsInClass = stMap.get(teacher);
+                StudentsInClass.add(student);
+                stMap.put(teacher, StudentsInClass);
+            }
         }
     }
 
